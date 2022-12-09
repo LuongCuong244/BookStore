@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
     View, 
     StyleSheet,
-    Image,
+    Text,
     FlatList,
 } from 'react-native';
 
@@ -12,40 +12,42 @@ import SearchBar from "../components/Search";
 
 import { books } from "../data/books";
 
-export default function HomeScreen(props) {
+export default function CartScreen(props) {
 
-    const [data, setData] = useState(books);
+    const [data, setData] = useState(books.filter((book) => {
+        if(book.isAddedToCart){
+            return book;
+        }
+    }));
 
     return (
         <LinearGradient
             style={styles.container}
             colors={['#3EB4BD', '#8ACDDA']}
         >
-            {/* <AppBar title={"Trang chủ"} hasLeading navigation = {props.navigation} /> */}
             <View style={styles.contentContainer} >
                 <SearchBar onClickSearchButton={(text) => {
                     setData(books.filter((book) => {
-                        if(book.name.startsWith(text.trim())){
+                        if(book.name.startsWith(text.trim()) && book.isAddedToCart){
                             return book
                         }
                     }));
                 }}/>
-                <Image 
-                    source={{uri: 'https://bizweb.dktcdn.net/100/386/441/themes/869880/assets/slider_1.jpg?1658716179964'}} 
-                    style = {{width: '95%', height: 100, marginVertical: 10}}
-                    resizeMode = {"cover"}
-                />
+                
+                <View style = {{width: '100%', marginVertical: 10, paddingLeft: 15}}>
+                    <Text style = {{fontSize: 20, fontWeight: '500', color: 'white', }} >{"* Danh sách đã thêm của bạn"}</Text>
+                </View>
+
                 <View style = {styles.listViewBackground} >
                     <FlatList
                         data={data}
                         renderItem = {(item) => {
 
                             const onClick = () => {
-                                item.item.isAddedToCart = !item.item.isAddedToCart;
-                                setData([...data])
+                                props.switchScreenCallBack("PayScreen", "Thanh toán", item.item);
                             }
                             
-                            return <BookItem item = {item} onClick = {onClick} />
+                            return <BookItem item = {item} onClick = {onClick} isPay = {true} />
                         }}
                     />
                 </View>
