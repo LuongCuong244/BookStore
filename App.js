@@ -16,8 +16,8 @@ const Stack = createStackNavigator();
 
 export default function App() {
 
-  const [screen, setScreen] = useState("HomeScreen");
-  const [title, setTitle] = useState("Trang chủ");
+  const [screen, setScreen] = useState("SignInScreen");
+  const [title, setTitle] = useState("Đăng nhập");
   const [params, setParams] = useState();
 
   const switchScreenCallBack = (name, title = "", params) => {
@@ -30,7 +30,7 @@ export default function App() {
     <View style={{ flex: 1 }}>
       {
         screen == "SignInScreen" ? (
-          <SignInScreen switchScreenCallBack={switchScreenCallBack} params = {params}/>
+          <SignInScreen currentScreen = {screen} switchScreenCallBack={switchScreenCallBack} params = {params}/>
         ) : (
           <View style = {{flex: 1}} >
             <AppBar currentScreen = {screen} title={title} hasLeading switchScreenCallBack={switchScreenCallBack} />

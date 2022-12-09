@@ -14,28 +14,32 @@ export default function AppBar({ currentScreen, title, hasLeading = false, hasBa
             colors={['#00FFAA', '#44B6BF']}
         >
             <Text style={styles.textStyle}>{title}</Text>
-            <View style={styles.buttonsContainer}>
-                <TouchableOpacity
-                    style={styles.buttonIconStyle}
-                    activeOpacity={0.7}
-                    onPress={() => { }}
-                >
-                    <Menu currentScreen = {currentScreen} switchScreenCallBack={switchScreenCallBack} />
-                </TouchableOpacity>
-                {
-                    currentScreen != "CartScreen" && (
+            {
+                currentScreen != "SignInScreen" && (
+                    <View style={styles.buttonsContainer}>
                         <TouchableOpacity
                             style={styles.buttonIconStyle}
                             activeOpacity={0.7}
-                            onPress={() => {
-                                switchScreenCallBack("CartScreen", "Giỏ hàng");
-                            }}
+                            onPress={() => { }}
                         >
-                            <Icon name="shopping-cart" size={30} color={'white'} />
+                            <Menu currentScreen={currentScreen} switchScreenCallBack={switchScreenCallBack} />
                         </TouchableOpacity>
-                    )
-                }
-            </View>
+                        {
+                            currentScreen != "CartScreen" && (
+                                <TouchableOpacity
+                                    style={styles.buttonIconStyle}
+                                    activeOpacity={0.7}
+                                    onPress={() => {
+                                        switchScreenCallBack("CartScreen", "Giỏ hàng");
+                                    }}
+                                >
+                                    <Icon name="shopping-cart" size={30} color={'white'} />
+                                </TouchableOpacity>
+                            )
+                        }
+                    </View>
+                )
+            }
         </LinearGradient>
     )
 }

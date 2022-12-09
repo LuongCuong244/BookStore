@@ -43,7 +43,7 @@ export default function SignInScreen(props) {
                 style={styles.container}
                 colors={['#3EB4BD', '#8ACDDA']}
             >
-                <AppBar title={"Đăng nhập"} />
+                <AppBar currentScreen = {props.currentScreen} title={"Đăng nhập"} />
                 <View style={styles.contentContainer} >
                     <View style={styles.textInputContainer} >
                         <Icon name="user" size={30} color={'#B6B6B6'} />
