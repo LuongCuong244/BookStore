@@ -208,6 +208,21 @@ export default Menu = (props) => {
                         <TouchableOpacity
                             style={{ width: '100%' }}
                             onPress={() => {
+                                props.switchScreenCallBack("ProductScreen", "Sản phẩm");
+                            }}
+                            activeOpacity={0.7}
+                        >
+                            <View style={styles.buttonItem} >
+                                <Text style={[
+                                    styles.textItem,
+                                    { color: props.currentScreen == "ProductScreen" ? 'yellow' : 'white' }
+                                ]} >Sản phẩm</Text>
+                            </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={{ width: '100%' }}
+                            onPress={() => {
                                 props.switchScreenCallBack("ContactScreen", "Liên hệ");
                             }}
                             activeOpacity={0.7}

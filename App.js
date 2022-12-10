@@ -11,6 +11,7 @@ import IntroduceScreen from "./src/screens/IntroduceScreen";
 import ContactScreen from "./src/screens/ContactScreen";
 import CartScreen from "./src/screens/CartScreen";
 import PayScreen from "./src/screens/PayScreen";
+import ProductScreen from "./src/screens/ProductScreen";
 
 const Stack = createStackNavigator();
 
@@ -57,6 +58,11 @@ export default function App() {
             {
               screen == "PayScreen" && (
                 <PayScreen switchScreenCallBack={switchScreenCallBack} params = {params}/>
+              )
+            }
+            {
+              screen == "ProductScreen" && (
+                <ProductScreen switchScreenCallBack={switchScreenCallBack} params = {params}/>
               )
             }
           </View>

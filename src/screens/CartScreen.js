@@ -15,9 +15,7 @@ import { books } from "../data/books";
 export default function CartScreen(props) {
 
     const [data, setData] = useState(books.filter((book) => {
-        if(book.isAddedToCart){
-            return book;
-        }
+        return book.isAddedToCart;
     }));
 
     return (
@@ -28,9 +26,7 @@ export default function CartScreen(props) {
             <View style={styles.contentContainer} >
                 <SearchBar onClickSearchButton={(text) => {
                     setData(books.filter((book) => {
-                        if(book.name.startsWith(text.trim()) && book.isAddedToCart){
-                            return book
-                        }
+                        return book.name.normalize().startsWith(text.trim().normalize()) && book.isAddedToCart;
                     }));
                 }}/>
                 

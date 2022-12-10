@@ -229,19 +229,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center'
     },
-    bookPriceTitle: {
-        fontSize: 25,
-        fontWeight: 'bold',
-        color: '#00516E',
-    },
     bookUnitPrice: {
         fontSize: 25,
         color: '#FFD700',
-    },
-    quantityLabel: {
-        fontSize: 20,
-        fontWeight: '300',
-        color: '#000000'
     },
     quantityButtonsContainer: {
         width: 120,

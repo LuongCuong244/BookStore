@@ -13,22 +13,19 @@ import SearchBar from "../components/Search";
 
 import { books } from "../data/books";
 
-export default function HomeScreen(props) {
+export default function ProductScreen(props) {
 
-    const [data, setData] = useState(books.filter((item) => {
-        return item.isHotProduct;
-    }));
+    const [data, setData] = useState(books);
 
     return (
         <LinearGradient
             style={styles.container}
             colors={['#3EB4BD', '#8ACDDA']}
         >
-            {/* <AppBar title={"Trang chủ"} hasLeading navigation = {props.navigation} /> */}
             <View style={styles.contentContainer} >
                 <SearchBar onClickSearchButton={(text) => {
                     setData(books.filter((book) => {
-                        return book.isHotProduct && book.name.normalize().startsWith(text.trim().normalize());
+                        return book.name.normalize().startsWith(text.trim().normalize());
                     }));
                 }}/>
                 <Image 
@@ -36,7 +33,7 @@ export default function HomeScreen(props) {
                     style = {{width: '95%', height: 100, marginVertical: 10}}
                     resizeMode = {"cover"}
                 />
-                <Text style = {{fontSize: 20, marginVertical: 5, color: 'white', fontWeight: 'bold', letterSpacing: 0.5}} >{"Sản phẩm nổi bật"}</Text>
+                <Text style = {{fontSize: 20, marginVertical: 5, color: 'white', fontWeight: 'bold', letterSpacing: 0.5}} >{"Tất cả sản phẩm"}</Text>
                 <View style = {styles.listViewBackground} >
                     <FlatList
                         data={data}
